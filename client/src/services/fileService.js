@@ -30,9 +30,20 @@ export const getFiles = async () => {
   }
 };
 
+export const geturl = async (key) => {
+  try {
+    const response = await api.get(`/file/view?key=${key}`);
+    
+    return response.data.url;
+  } catch (error) {
+    throw error.response?.data?.error || 'Failed to get file URL';
+  }
+};
+
+
 export const downloadFile = async (key) => {
   try {
-    const response = await api.get(`/file/${key}`, {
+    const response = await api.get(`/file?key=${key}`, {
       responseType: 'blob'
     });
     
@@ -44,7 +55,7 @@ export const downloadFile = async (key) => {
 
 export const deleteFile = async (key) => {
   try {
-    const response = await api.delete(`/file/${key}`);
+    const response = await api.delete(`/file?key=${key}`);
     return response.data;
   } catch (error) {
     throw error.response?.data?.error || 'Failed to delete file';

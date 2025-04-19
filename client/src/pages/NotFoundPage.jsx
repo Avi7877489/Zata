@@ -15,7 +15,7 @@ const NotFoundPage = () => {
             The page you're looking for doesn't exist or has been moved.
           </p>
           <div className="mt-8">
-            <Link to="/" className="btn btn-primary">
+            <Link to="/" className="px-4 py-2 rounded-md font-medium transition-all focus:outline-none focus:ring-2 focus:ring-opacity-50 bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500">
               Go back home
             </Link>
           </div>

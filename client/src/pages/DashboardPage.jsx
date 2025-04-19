@@ -23,7 +23,7 @@ const DashboardPage = () => {
         setLoading(true);
         const files = await getFiles();
         
-        const totalSize = files.reduce((acc, file) => acc + file.size, 0);
+        const totalSize = files.reduce((acc, file) => acc + file.fileSize, 0);
         const recentFiles = files.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 5);
         
         setStats({
@@ -80,7 +80,7 @@ const DashboardPage = () => {
           </div>
           <div>
             <p className="text-gray-500 text-sm">Upload Limit</p>
-            <h3 className="text-2xl font-bold text-gray-900">50MB / file</h3>
+            <h3 className="text-2xl font-bold text-gray-900">2GB / file</h3>
           </div>
         </Card>
       </div>
@@ -112,11 +112,11 @@ const DashboardPage = () => {
                       <div className="flex items-center">
                         <FaFileAlt className="flex-shrink-0 h-5 w-5 text-gray-400" />
                         <div className="ml-4">
-                          <div className="text-sm font-medium text-gray-900 truncate max-w-xs">{file.name}</div>
+                          <div className="text-sm font-medium text-gray-900 truncate max-w-xs">{file.fileName}</div>
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{formatBytes(file.size)}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{formatBytes(file.fileSize)}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                       {new Date(file.createdAt).toLocaleDateString()}
                     </td>

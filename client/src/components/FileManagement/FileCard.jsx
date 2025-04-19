@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaDownload, FaTrash, FaEye } from 'react-icons/fa';
 import { toast } from 'react-toastify';
-import { downloadFile, deleteFile } from '../../services/fileService';
+import { downloadFile, deleteFile,geturl } from '../../services/fileService';
 import { formatBytes } from '../../utils/formatBytes';
 import { formatDate } from '../../utils/formatDate';
 import { getFileIcon } from '../../utils/fileTypeIcons';
@@ -17,13 +17,13 @@ const FileCard = ({ file, onDeleteSuccess }) => {
   const handleDownload = async () => {
     try {
       setIsDownloading(true);
-      const response = await downloadFile(file.key);
+      const response = await downloadFile(file.s3Key);
       
       // Create a download link
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement('a');
       link.href = url;
-      link.setAttribute('download', file.name);
+      link.setAttribute('download', file.fileName);
       document.body.appendChild(link);
       link.click();
       link.remove();
@@ -38,8 +38,8 @@ const FileCard = ({ file, onDeleteSuccess }) => {
     if (window.confirm('Are you sure you want to delete this file?')) {
       try {
         setIsDeleting(true);
-        await deleteFile(file.key);
-        onDeleteSuccess(file.key);
+        await deleteFile(file.s3Key);
+        onDeleteSuccess(file.s3Key);
       } catch (error) {
         toast.error('Failed to delete file. Please try again.');
       } finally {
@@ -48,10 +48,12 @@ const FileCard = ({ file, onDeleteSuccess }) => {
     }
   };
   
-  const handleViewFile = () => {
+  const handleViewFile = async() => {
     // Implementation depends on file type
-    if (file.mimetype.includes('image') || file.mimetype.includes('pdf')) {
-      window.open(file.url, '_blank');
+
+    const url = await geturl(file.s3Key);
+    if (file) {
+      window.open(url, '_blank');
     } else {
       toast.info('This file type cannot be previewed. Please download it instead.');
     }
@@ -64,10 +66,10 @@ const FileCard = ({ file, onDeleteSuccess }) => {
           <FileIcon className="h-6 w-6 text-gray-500" />
         </div>
         <div className="ml-4 flex-1 min-w-0">
-          <h3 className="text-lg font-medium text-gray-900 truncate" title={file.name}>
-            {file.name}
+          <h3 className="text-lg font-medium text-gray-900 truncate" title={file.fileName}>
+            {file.fileName}
           </h3>
-          <p className="text-sm text-gray-500">{formatBytes(file.size)}</p>
+          <p className="text-sm text-gray-500">{formatBytes(file.fileSize)}</p>
         </div>
       </div>
       

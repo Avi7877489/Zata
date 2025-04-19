@@ -57,7 +57,7 @@ const FileUploader = ({ onUploadSuccess }) => {
         <p className="text-gray-700 text-center mb-2">
           {isDragActive ? 'Drop files here' : 'Drag and drop files here, or click to select files'}
         </p>
-        <p className="text-gray-500 text-sm text-center">Upload any file type. Max size: 50MB</p>
+        <p className="text-gray-500 text-sm text-center">Upload any file type. Max size: 2GB</p>
         
         {uploading && (
           <div className="mt-4 w-full max-w-xs">

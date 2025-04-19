@@ -67,7 +67,7 @@ const Register = () => {
               value={formik.values.name}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              className="input mt-1"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent mt-1"
               placeholder="Full Name"
             />
             {formik.touched.name && formik.errors.name && (
@@ -85,7 +85,7 @@ const Register = () => {
               value={formik.values.email}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              className="input mt-1"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent mt-1"
               placeholder="Email address"
             />
             {formik.touched.email && formik.errors.email && (
@@ -103,7 +103,7 @@ const Register = () => {
               value={formik.values.password}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              className="input mt-1"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent mt-1"
               placeholder="Password"
             />
             {formik.touched.password && formik.errors.password && (
@@ -121,7 +121,7 @@ const Register = () => {
               value={formik.values.confirmPassword}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              className="input mt-1"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent mt-1"
               placeholder="Confirm Password"
             />
             {formik.touched.confirmPassword && formik.errors.confirmPassword && (
@@ -134,7 +134,7 @@ const Register = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="btn btn-primary w-full flex justify-center"
+            className="cursor-pointer px-4 py-2 rounded-md font-medium transition-all focus:outline-none focus:ring-2 focus:ring-opacity-50 bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500 w-full flex justify-center"
           >
             {isSubmitting ? (
               <span className="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>
@@ -159,16 +159,16 @@ const Register = () => {
           <button
             type="button"
             onClick={() => handleOAuthLogin('google')}
-            className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
+            className="cursor-pointer w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
           >
             <span className="sr-only">Sign up with Google</span>
-            <FaGoogle className="h-5 w-5 text-red-500" />
+            <FaGoogle className="h-5 w-5 text-blue-600" />
           </button>
           
           <button
             type="button"
             onClick={() => handleOAuthLogin('github')}
-            className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
+            className="cursor-pointer w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
           >
             <span className="sr-only">Sign up with GitHub</span>
             <FaGithub className="h-5 w-5" />

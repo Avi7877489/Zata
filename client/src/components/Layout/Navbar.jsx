@@ -50,7 +50,7 @@ const Navbar = () => {
                       </div>
                       <button
                         onClick={logout}
-                        className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center"
+                        className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center cursor-pointer"
                       >
                         <FaSignOutAlt className="mr-2" />
                         Sign out
@@ -125,7 +125,7 @@ const Navbar = () => {
                         logout();
                         setIsMobileMenuOpen(false);
                       }}
-                      className="block w-full text-left px-4 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100"
+                      className="cursor-pointer block w-full text-left px-4 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100"
                     >
                       Sign out
                     </button>

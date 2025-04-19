@@ -29,7 +29,7 @@ const FilesList = ({ refreshTrigger }) => {
   }, [refreshTrigger]);
   
   const handleDeleteSuccess = (deletedFileKey) => {
-    setFiles(files.filter(file => file.key !== deletedFileKey));
+    setFiles(files.filter(file => file.s3Key !== deletedFileKey));
     toast.success('File deleted successfully!');
   };
   
@@ -53,7 +53,7 @@ const FilesList = ({ refreshTrigger }) => {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {files.map((file) => (
         <FileCard
-          key={file.key}
+          key={file.s3Key}
           file={file}
           onDeleteSuccess={handleDeleteSuccess}
         />
